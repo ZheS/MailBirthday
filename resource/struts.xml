@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 开启使用开发模式，详细错误提示 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- 将对象交给spring管理 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 指定资源编码类型 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 指定每次请求到达，重新加载资源文件 -->
+	<constant name="struts.i18n.reload" value="true" />
+	<!-- 指定每次配置文件更改后，自动重新加载 -->
+	<constant name="struts.configuration.xml.reload" value="false" />
+	<!-- 国际化资源文件 -->
+	<constant name="struts.custom.i18n.resources" value="content/Language" />
+	<!-- 浏览器缓存 -->
+	<constant name="struts.serve.static.browserCache" value="false" />
+	<!-- 默认后缀名 -->
+	<constant name="struts.action.extension" value="do,action,jhtml,," />
+	<!-- Struts Annotation -->
+	<constant name="actionPackages"
+		value="com.svwpu.manage.mailbirthday.application.modules" />
+	<!-- 设置默认页面路径 -->	
+	<constant name="struts.convention.result.path" value="/"/>   
+
+	<package name="default" extends="struts-default">
+		<!-- 配置拦截器 -->
+		<interceptors>
+			<interceptor-stack name="defaultStackMod">
+				<interceptor-ref name="exception">
+					<param name="logEnabled">true</param>
+					<param name="logLevel">error</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="defaultStackMod" />
+		<!-- 配置全局结果、映射 -->
+		<global-results>
+			<result name="exception">/errorpage/globalexceptionerror.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="exception" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+		<!-- 配置直接访问的页面 <action name="*"> <result name="success">/WEB-INF/jsp/index.jsp</result> 
+			</action> -->
+	</package>
+
+</struts>
