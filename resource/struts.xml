@@ -22,7 +22,7 @@
 	<constant name="struts.action.extension" value="do,action,jhtml,," />
 	<!-- Struts Annotation -->
 	<constant name="actionPackages"
-		value="com.svwpu.manage.mailbirthday.application.modules" />
+		value="com.svwpu.mailbirthday.sendmail" />
 	<!-- 设置默认页面路径 -->	
 	<constant name="struts.convention.result.path" value="/"/>   
 

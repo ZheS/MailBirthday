@@ -1,0 +1,52 @@
+
+body,div,p,form,ul,img,input,span,dd,dt {
+	font-size:12px;
+	margin:0;
+	padding:0;
+}
+
+body {
+	color:#333;
+	font-family:"微软雅黑","宋体";
+	margin:0 auto;
+}
+
+a {
+	color:#333;
+	text-decoration:none;
+}
+
+a:hover {
+	color:#0b2f5d;
+	text-decoration:none;
+}
+
+ul,li {
+	list-style-type:none;
+}
+
+img {
+	border:none;
+	display:inline;
+}
+table {
+	border-collapse:collapse;
+}
+.clear{
+	clear:both;	
+	line-height:0px;
+}
+p{
+	margin:0px;	
+}
+h1,h2,h3,h4,h5{font-size:12px; font-weight:normal; margin: 0;}
+
+.wrap .pb0{ margin-bottom:0;}
+
+.fl{float:left;display:inline;}
+.fr{float:right;display:inline;}
+
+.clearfix:after{content:'\20';display: block;clear: both;visibility: hidden;line-height: 0;height:0;}
+.clearfix{display: inline-block;}
+html[xmlns] .clearfix {display: block;}
+* html .clearfix {height: 1%;}

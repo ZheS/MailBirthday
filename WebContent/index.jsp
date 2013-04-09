@@ -3,4 +3,7 @@
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
+<body>
+	<s:action name="index" namespace="/" executeResult="true"></s:action>
+</body>
 </html>

@@ -35,7 +35,7 @@
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan"
-			value="com.svwpu.manage.mailbirthday.application.modules.*.model" />
+			value="com.svwpu.mailbirthday.sendmail.model" />
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
