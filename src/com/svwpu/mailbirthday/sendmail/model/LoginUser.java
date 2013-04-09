@@ -39,6 +39,12 @@ public class LoginUser extends BaseModel {
 
     @Column(length = 255, nullable = true)
     private String bak; // 备注
+    
+    @Column(length = 255, nullable = true)
+    private String corporation; // 所在企业
+    
+    @Column(length = 255, nullable = true)
+    private String isValid; // 是否可用
 
     public Long getId() {
 	return id;
@@ -78,6 +84,22 @@ public class LoginUser extends BaseModel {
 
     public void setBak(String bak) {
 	this.bak = bak;
+    }
+    
+    public String getCorporation() {
+        return corporation;
+    }
+
+    public void setCorporation(String corporation) {
+        this.corporation = corporation;
+    }
+
+    public String getIsValid() {
+        return isValid;
+    }
+
+    public void setIsValid(String isValid) {
+        this.isValid = isValid;
     }
 
 }

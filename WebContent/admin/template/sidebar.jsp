@@ -54,17 +54,17 @@
 		<table border="0" cellpadding="0" cellspacing="0" align="center"
 			width="170px" style="border: 2px #E2E2E2 solid; margin: 5px 0px;">
 			<tr>
-				<td class="nav_f" onclick="hideOrShow('menu2')"
-					style="cursor: pointer">发送信息查询</td>
+				<td class="nav_f" onclick="hideOrShow('menu1')"
+					style="cursor: pointer">首页</td>
 			</tr>
 			<tr>
 				<td>
-					<div id="menu2">
+					<div id="menu1">
 						<table border="0" cellpadding="0" cellspacing="0" align="center"
 							width="96%">
 							<tr>
 								<td class="nav_s"><a
-									href="/MailBirthday/admin/createCorporation.action">发送信息查询</a></td>
+									href="/MailBirthday/admin/sendMessage.action">首页</a></td>
 							</tr>
 						</table>
 					</div>
@@ -75,12 +75,12 @@
 		<table border="0" cellpadding="0" cellspacing="0" align="center"
 			width="170px" style="border: 2px #E2E2E2 solid; margin: 5px 0px;">
 			<tr>
-				<td class="nav_f" onclick="hideOrShow('menu1')"
+				<td class="nav_f" onclick="hideOrShow('menu2')"
 					style="cursor: pointer">个人信息</td>
 			</tr>
 			<tr>
 				<td>
-					<div id="menu1">
+					<div id="menu2">
 						<table border="0" cellpadding="0" cellspacing="0" align="center"
 							width="96%">
 							<tr>
@@ -125,12 +125,12 @@
 		<table border="0" cellpadding="0" cellspacing="0" align="center"
 			width="170px" style="border: 2px #E2E2E2 solid; margin: 5px 0px;">
 			<tr>
-				<td class="nav_f" onclick="hideOrShow('menu5')"
+				<td class="nav_f" onclick="hideOrShow('menu4')"
 					style="cursor: pointer">退出系统</td>
 			</tr>
 			<tr>
 				<td>
-					<div id="menu5">
+					<div id="menu4">
 						<table border="0" cellpadding="0" cellspacing="0" align="center"
 							width="96%">
 							<tr>
