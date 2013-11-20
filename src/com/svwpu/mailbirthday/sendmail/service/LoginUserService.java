@@ -19,7 +19,7 @@ public interface LoginUserService extends BaseService {
      * @param
      * @return List<LoginUser>
      */
-    List<LoginUser> getAllLoginUser();
+    List<LoginUser> findAllLoginUser();
 
     /**
      * 添加后台账户
@@ -51,7 +51,7 @@ public interface LoginUserService extends BaseService {
      * @param id
      * @return LoginUser
      */
-    LoginUser findById(Long id);
+    LoginUser getById(Long id);
 
     /**
      * 根据工号查询后台账户
@@ -59,5 +59,5 @@ public interface LoginUserService extends BaseService {
      * @param userID
      * @return LoginUser
      */
-    LoginUser findByUserID(String userID);
+    LoginUser getByUserID(String userID);
 }

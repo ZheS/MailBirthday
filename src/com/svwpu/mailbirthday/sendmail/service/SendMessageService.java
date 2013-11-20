@@ -5,7 +5,6 @@ import java.util.List;
 import com.svwpu.mailbirthday.base.service.BaseService;
 import com.svwpu.mailbirthday.sendmail.model.SendMessage;
 
-
 /**
  * 发送信息管理模块
  * 

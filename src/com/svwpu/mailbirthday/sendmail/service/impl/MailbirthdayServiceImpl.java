@@ -612,7 +612,7 @@ public class MailbirthdayServiceImpl extends BaseServiceImpl implements MailBirt
 	    Iterator<SendMessage> it = sendMessages.iterator();
 	    while (it.hasNext()) {
 		SendMessage sendMessage = it.next();
-		Employee employee = employeeDao.findByNumber(sendMessage.getNumber());
+		Employee employee = employeeDao.getByNumber(sendMessage.getNumber());
 		if (employee == null) {
 		    logger.warn("SendMessage表中数据错误");
 		    continue;
@@ -663,8 +663,8 @@ public class MailbirthdayServiceImpl extends BaseServiceImpl implements MailBirt
 	return sendMessages;
     }
 
-    //@Scheduled(cron = "0 0 7 * * ?")
-    @Scheduled(fixedRate = 4000000)
+    @Scheduled(cron = "0 0 7 * * ?")
+    //@Scheduled(fixedRate = 4000000)
     public void run() {
 	List<Employee> employees = findEmployeeBirthdayToday();
 	if (employees == null || employees.size() == 0) {

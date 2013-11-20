@@ -13,7 +13,7 @@ public class EmployeeDaoImpl extends BaseDaoImpl<Employee, Long> implements Empl
 
     @SuppressWarnings("unchecked")
     @Override
-    public Employee findByNumber(String number) {
+    public Employee getByNumber(String number) {
 	String hql = "";
 	hql = "from Employee e where e.number='" + number + "'";
 	List<Employee> ls = find(hql);

@@ -29,9 +29,9 @@
 					<tbody>
 						<s:iterator value="sendMessages" status="status">
 							<tr>
-								<td class="table_td"><s:property value="name"></s:property>
+								<td class="table_td"><s:property value="employees[#status.index].name"></s:property>
 								</td>
-								<td class="table_td"><s:property value="email"></s:property>
+								<td class="table_td"><s:property value="employees[#status.index].email"></s:property>
 								</td>
 								<td class="table_td"><s:property value="sendMessages[#status.index].memo"></s:property>
 								</td>

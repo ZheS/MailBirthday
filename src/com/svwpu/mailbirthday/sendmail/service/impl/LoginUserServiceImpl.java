@@ -21,7 +21,7 @@ public class LoginUserServiceImpl extends BaseServiceImpl implements LoginUserSe
     LoginUserDao loginUserDao;
 
     @Override
-    public List<LoginUser> getAllLoginUser() {
+    public List<LoginUser> findAllLoginUser() {
 	return loginUserDao.loadAll();
     }
 
@@ -44,12 +44,12 @@ public class LoginUserServiceImpl extends BaseServiceImpl implements LoginUserSe
     }
 
     @Override
-    public LoginUser findById(Long id) {
+    public LoginUser getById(Long id) {
 	return loginUserDao.get(id);
     }
 
     @Override
-    public LoginUser findByUserID(String userID) {
+    public LoginUser getByUserID(String userID) {
 	return loginUserDao.getByUserID(userID);
     }
 

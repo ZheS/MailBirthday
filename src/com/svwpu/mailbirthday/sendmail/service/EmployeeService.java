@@ -3,8 +3,7 @@ package com.svwpu.mailbirthday.sendmail.service;
 import java.util.List;
 
 import com.svwpu.mailbirthday.base.service.BaseService;
-import com.svwpu.mailbirthday.sendmail.model.SendMessage;
-
+import com.svwpu.mailbirthday.sendmail.model.Employee;
 
 /**
  * 发送信息管理模块
@@ -15,19 +14,27 @@ import com.svwpu.mailbirthday.sendmail.model.SendMessage;
 public interface EmployeeService extends BaseService {
 
     /**
-     * 获得所有发送信息列表
+     * 获得所有人员信息列表
      * 
      * @param
-     * @return List<SendMessage>
+     * @return List<Employee>
      */
-    List<SendMessage> findAllSendMessage();
+    List<Employee> findAllEmployee();
 
     /**
      * 根据id查询发送信息
      * 
      * @param id
-     * @return SendMessage
+     * @return Employee
      */
-    SendMessage getById(Long id);
+    Employee getById(Long id);
+
+    /**
+     * 根据number查询发送信息
+     * 
+     * @param number
+     * @return Employee
+     */
+    Employee getByNumber(String number);
 
 }

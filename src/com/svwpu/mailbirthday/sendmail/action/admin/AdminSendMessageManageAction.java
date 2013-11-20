@@ -1,6 +1,8 @@
 package com.svwpu.mailbirthday.sendmail.action.admin;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -9,10 +11,19 @@ import org.apache.struts2.convention.annotation.ExceptionMappings;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.svwpu.mailbirthday.base.action.BaseAction;
+import com.svwpu.mailbirthday.sendmail.model.Employee;
+import com.svwpu.mailbirthday.sendmail.model.LoginUser;
 import com.svwpu.mailbirthday.sendmail.model.SendMessage;
+import com.svwpu.mailbirthday.sendmail.service.EmployeeService;
+import com.svwpu.mailbirthday.sendmail.service.LoginUserService;
 import com.svwpu.mailbirthday.sendmail.service.SendMessageService;
 
 @ParentPackage(value = "struts-default")
@@ -26,7 +37,17 @@ public class AdminSendMessageManageAction extends BaseAction {
     @Autowired
     private SendMessageService sendMessageService;
 
+    @Autowired
+    private EmployeeService employeeService;
+
+    @Autowired
+    private LoginUserService loginUserService;
+
     private List<SendMessage> sendMessages;
+
+    private List<Employee> employees;
+
+    private LoginUser loginUser;
 
     private Date sendTime;
 
@@ -40,20 +61,39 @@ public class AdminSendMessageManageAction extends BaseAction {
 	    @Result(name = "success", location = "sendMessageManage/sendMessage.jsp"),
 	    @Result(name = "input", location = "/error.jsp") })
     public String sendMessage() {
+	SecurityContext secCtx = SecurityContextHolder.getContext();
+	Authentication auth = secCtx.getAuthentication();
+	Object principal = auth.getPrincipal();
+	String userName = "";
+	if (principal instanceof UserDetails) {
+	    userName = ((UserDetails) principal).getUsername();
+	} else {
+	    userName = principal.toString();
+	}
 	String ret;
+	loginUser = loginUserService.getByUserID(userName);
 	sendMessages = sendMessageService.findAllSendMessage();
-	// employees =
-	// // 计算总页数
-	// if (page == 0)
-	// page = 1;
-	// count = corporations.size();
-	// totalPage = (count - 1) / 10 + 1;
-	// // 每页显示10条
-	// int listStart = (page - 1) * 10;
-	// int listEnd = page * 10;// which is exclusive
-	// if (listEnd >= corporations.size())
-	// listEnd = corporations.size();
-	// corporations = corporations.subList(listStart, listEnd);
+	employees = new ArrayList<Employee>();
+	Iterator<SendMessage> it = sendMessages.iterator();
+	DateTime dateTime_now = DateTime.now();
+	while (it.hasNext()) {
+	    SendMessage sm = it.next();
+	    String number = sm.getNumber();
+	    Employee e = employeeService.getByNumber(number);
+	    DateTime dateTime = new DateTime(sm.getSendTime());
+	    int sm_year = dateTime.getYear();// 发送信息-年
+	    int sm_mon = dateTime.getMonthOfYear();// 发送信息-月
+	    int sm_day = dateTime.getDayOfMonth();// 发送信息-日
+	    int y = dateTime_now.getYear();// 当前年
+	    int m = dateTime_now.getMonthOfYear();// 当前月
+	    int d = dateTime_now.getDayOfMonth();// 当前日
+	    if (sm_year == y && sm_mon == m && sm_day == d && e.getCorporationCode() == loginUser.getCorporationCode()) {
+		continue;
+	    } else {
+		it.remove();
+	    }
+	    employees.add(e);
+	}
 	ret = SUCCESS;
 	return ret;
     }
@@ -96,6 +136,14 @@ public class AdminSendMessageManageAction extends BaseAction {
 
     public void setMemo(String memo) {
 	this.memo = memo;
+    }
+
+    public List<Employee> getEmployees() {
+	return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+	this.employees = employees;
     }
 
 }

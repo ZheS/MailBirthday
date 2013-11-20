@@ -11,7 +11,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import com.svwpu.mailbirthday.base.model.BaseModel;
 
-
 /**
  * 后台账户表
  * 
@@ -39,12 +38,12 @@ public class LoginUser extends BaseModel {
 
     @Column(length = 255, nullable = true)
     private String bak; // 备注
-    
+
     @Column(length = 255, nullable = true)
-    private String corporation; // 所在企业
-    
+    private Integer corporationCode; // 所在企业
+
     @Column(length = 255, nullable = true)
-    private String isValid; // 是否可用
+    private Integer isValid; // 是否可用
 
     public Long getId() {
 	return id;
@@ -85,21 +84,21 @@ public class LoginUser extends BaseModel {
     public void setBak(String bak) {
 	this.bak = bak;
     }
-    
-    public String getCorporation() {
-        return corporation;
+
+    public Integer getCorporationCode() {
+	return corporationCode;
     }
 
-    public void setCorporation(String corporation) {
-        this.corporation = corporation;
+    public void setCorporationCode(Integer corporationCode) {
+	this.corporationCode = corporationCode;
     }
 
-    public String getIsValid() {
-        return isValid;
+    public Integer getIsValid() {
+	return isValid;
     }
 
-    public void setIsValid(String isValid) {
-        this.isValid = isValid;
+    public void setIsValid(Integer isValid) {
+	this.isValid = isValid;
     }
 
 }

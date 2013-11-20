@@ -5,5 +5,7 @@ import com.svwpu.mailbirthday.sendmail.model.Employee;
 
 public interface EmployeeDao extends BaseDao<Employee, Long> {
 
-    Employee findByNumber(String number);
+    Employee getByNumber(String number);
+    
+    
 }

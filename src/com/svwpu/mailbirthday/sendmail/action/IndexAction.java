@@ -50,7 +50,7 @@ public class IndexAction extends BaseAction {
 	}
 	String ret;
 	try {
-	    loginUser = loginUserService.findByUserID(userName);
+	    loginUser = loginUserService.getByUserID(userName);
 	    if (loginUser != null) {
 		String position = loginUser.getRoleType();
 		logger.debug("position：{}", position);
